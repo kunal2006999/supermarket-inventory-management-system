@@ -23,7 +23,7 @@ public class SaleItemEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "bill_id")
-    private BillEntity billId;
+    private BillEntity bill;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "product_id")
@@ -36,5 +36,6 @@ public class SaleItemEntity {
     @Column(nullable = false)
     @NonNull
     private BigDecimal unitPrice;
+
 
 }

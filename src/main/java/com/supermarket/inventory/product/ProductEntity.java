@@ -42,10 +42,11 @@ public class ProductEntity {
 
     private LocalDate expiryDate;
 
-    @ManyToOne
-    @JoinColumn(name = "supplier_id")
-    private SupplierEntity supplierName;
-
     private boolean isDeleted = false;
+
+    @ManyToOne
+    @JoinColumn(name = "supplier_id", nullable = false)
+    private SupplierEntity supplier;
+
 
 }
