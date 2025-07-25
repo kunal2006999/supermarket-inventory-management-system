@@ -40,7 +40,7 @@ public class BillEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "staff_id")
-    private UserEntity staff; // Assuming staff is a user
+    private UserEntity staff;
 
     @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SaleItemEntity> saleItems = new ArrayList<>();

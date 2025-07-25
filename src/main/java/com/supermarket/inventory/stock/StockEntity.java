@@ -33,8 +33,6 @@ public class StockEntity {
     @Column(nullable = false)
     private StockChangeType type;
 
-    private LocalDate expiryDate;
-
     @Column(nullable = false, updatable = false)
     private LocalDateTime timestamp;
 

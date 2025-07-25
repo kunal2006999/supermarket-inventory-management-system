@@ -36,11 +36,11 @@ public class ProductEntity {
     @NonNull
     private BigDecimal pricePerUnit;
 
+    @Column(nullable = false)
+    @NonNull
     private int quantityInStock;
 
     private int reorderLevel;
-
-    private LocalDate expiryDate;
 
     private boolean isDeleted = false;
 
