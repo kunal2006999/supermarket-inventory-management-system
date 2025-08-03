@@ -29,6 +29,9 @@ public class StockEntity {
     @Column(nullable = false)
     private int changeQuantity;
 
+    @Column(nullable = false)
+    private int finalQuantity;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private StockChangeType type;
@@ -44,6 +47,9 @@ public class StockEntity {
             timestamp = LocalDateTime.now();
         }
     }
+
+    @Version
+    private Integer version;
 
 }
 

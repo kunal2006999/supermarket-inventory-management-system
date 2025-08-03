@@ -34,8 +34,8 @@ public class SupplierEntity {
     @NonNull
     private String email;
 
-    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductEntity> products = new ArrayList<>();
+    //@OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
+    //private List<ProductEntity> products = new ArrayList<>();
 
 }
 

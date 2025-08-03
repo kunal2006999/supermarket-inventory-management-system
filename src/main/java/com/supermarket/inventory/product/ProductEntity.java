@@ -44,9 +44,9 @@ public class ProductEntity {
 
     private boolean isDeleted = false;
 
-    @ManyToOne
-    @JoinColumn(name = "supplier_id", nullable = false)
-    private SupplierEntity supplier;
+    //@ManyToOne
+    //@JoinColumn(name = "supplier_id", nullable = false)
+    //private SupplierEntity supplier;
 
 
 }

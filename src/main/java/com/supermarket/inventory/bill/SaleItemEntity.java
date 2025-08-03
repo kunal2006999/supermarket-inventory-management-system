@@ -27,7 +27,7 @@ public class SaleItemEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "product_id")
-    private ProductEntity productId;
+    private ProductEntity product;
 
     @Column(nullable = false)
     @NonNull
@@ -36,6 +36,11 @@ public class SaleItemEntity {
     @Column(nullable = false)
     @NonNull
     private BigDecimal unitPrice;
+
+    @Column(nullable = false)
+    private BigDecimal total;
+
+    private double pricePerUnitAtSale;
 
 
 }

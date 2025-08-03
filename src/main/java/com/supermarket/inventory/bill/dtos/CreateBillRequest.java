@@ -20,10 +20,10 @@ public class CreateBillRequest {
     @NonNull
     private String paymentMode;
 
-    @NonNull
-    private UserEntity staff;
+    //@NonNull
+    //private UserEntity staff;
 
     @NonNull
-    private List<SaleItemEntity> saleItems = new ArrayList<>();
+    private List<SaleItemRequest> saleItems;
 
 }

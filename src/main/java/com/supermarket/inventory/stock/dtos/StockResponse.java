@@ -2,21 +2,24 @@ package com.supermarket.inventory.stock.dtos;
 
 import com.supermarket.inventory.product.ProductEntity;
 import com.supermarket.inventory.stock.StockChangeType;
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.NonNull;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Data
-@Setter(AccessLevel.NONE)
-public class StockRequest {
+public class StockResponse {
 
-    @NonNull
-    private Long productId;
+    private ProductResponse product;
+
+    private Long id;
 
     private int changeQuantity;
+
+    private int finalQuantity;
+
+    private StockChangeType type;
+
+    private LocalDateTime timestamp;
 
     private String remarks;
 

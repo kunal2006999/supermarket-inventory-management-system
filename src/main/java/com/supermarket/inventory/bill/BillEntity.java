@@ -32,18 +32,28 @@ public class BillEntity {
     private LocalDateTime saleDateTime;
 
     @Column(nullable = false)
-    @NonNull
     private BigDecimal totalAmount;
 
     @Column(nullable = false)
     private String paymentMode;
 
+    /*
     @ManyToOne(optional = false)
     @JoinColumn(name = "staff_id")
     private UserEntity staff;
+    */
+
 
     @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SaleItemEntity> saleItems = new ArrayList<>();
+
+    @PrePersist
+    public void setTimestamp() {
+        if (saleDateTime == null) {
+            saleDateTime = LocalDateTime.now();
+        }
+    }
+
 
 
 }

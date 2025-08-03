@@ -1,6 +1,7 @@
 package com.supermarket.inventory.product;
 
 import com.supermarket.inventory.product.dtos.CreateProductRequest;
+import com.supermarket.inventory.product.dtos.UpdateProductRequest;
 import com.supermarket.inventory.users.UserEntity;
 import com.supermarket.inventory.users.UserService;
 import com.supermarket.inventory.users.UsersRepository;
@@ -25,6 +26,31 @@ public class ProductService {
         ProductEntity newProduct = modelMapper.map(p, ProductEntity.class);
 
         return productRepository.save(newProduct);
+    }
+
+    public ProductEntity updateProduct(Long productId, UpdateProductRequest p) {
+        ProductEntity product = getProduct(productId);
+        if (p.getName() != null) {
+            product.setName(p.getName());
+        }
+        if (p.getCategory() != null) {
+            product.setCategory(p.getCategory());
+        }
+        if (p.getBrand() != null) {
+            product.setBrand(p.getBrand());
+        }
+        if (p.getPricePerUnit() != null) {
+            product.setPricePerUnit(p.getPricePerUnit());
+        }
+        product.setReorderLevel(p.getReorderLevel());
+        product.setDeleted(p.isDeleted());
+
+        return productRepository.save(product);
+    }
+
+    public void deleteProduct(Long productId) {
+        ProductEntity product = getProduct(productId);
+        productRepository.delete(product);
     }
 
     public ProductEntity getProduct(String name) {
