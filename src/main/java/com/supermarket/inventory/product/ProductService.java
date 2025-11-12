@@ -53,16 +53,25 @@ public class ProductService {
         productRepository.delete(product);
     }
 
-    public ProductEntity getProduct(String name) {
-        return productRepository.findByName(name).orElseThrow(() -> new ProductService.ProductNotFoundException(name));
-    }
-
     public ProductEntity getProduct(Long productId) {
         return productRepository.findById(productId).orElseThrow(() -> new ProductService.ProductNotFoundException(productId));
     }
 
     public List<ProductEntity> getAllProduct() {
         return productRepository.findAll();
+    }
+
+    public List<ProductEntity> searchProducts(String name, String category, String brand) {
+        return productRepository.findByFilters(name, category, brand, false); // false = not deleted
+    }
+
+    public List<ProductEntity> getLowStockProducts() {
+        List<ProductEntity> allProducts = productRepository.findAll();
+        int defaultReorderLevel = 10;
+        return allProducts.stream()
+                .filter(p -> p.getQuantityInStock() <
+                        ((Integer) p.getReorderLevel() != null ? p.getReorderLevel() : defaultReorderLevel))
+                .toList();
     }
 
     public static class ProductNotFoundException extends IllegalArgumentException {

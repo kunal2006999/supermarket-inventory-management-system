@@ -40,7 +40,6 @@ public class SaleItemEntity {
     @Column(nullable = false)
     private BigDecimal total;
 
-    private double pricePerUnitAtSale;
 
 
 }

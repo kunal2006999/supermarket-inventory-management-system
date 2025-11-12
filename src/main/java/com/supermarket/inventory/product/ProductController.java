@@ -60,4 +60,24 @@ public class ProductController {
         return ResponseEntity.ok(productResponse);
     }
 
+    @GetMapping("/search")
+    ResponseEntity<List<CreateProductResponse>> searchProducts(@RequestParam(required = false) String name,
+                                                               @RequestParam(required = false) String category,
+                                                               @RequestParam(required = false) String brand) {
+        var products = productService.searchProducts(name, category, brand);
+        List<CreateProductResponse> productResponse = products.stream()
+                .map(product -> modelMapper.map(product, CreateProductResponse.class))
+                .toList();
+        return ResponseEntity.ok(productResponse);
+    }
+
+    @GetMapping("/low_stock")
+    ResponseEntity<List<CreateProductResponse>> getLowStockProduct() {
+        var products = productService.getLowStockProducts();
+        List<CreateProductResponse> productResponse = products.stream()
+                .map(product -> modelMapper.map(product, CreateProductResponse.class))
+                .toList();
+        return ResponseEntity.ok(productResponse);
+    }
+
 }

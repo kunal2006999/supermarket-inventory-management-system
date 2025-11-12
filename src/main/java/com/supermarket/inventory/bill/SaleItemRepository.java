@@ -5,4 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SaleItemRepository extends JpaRepository<SaleItemEntity, Long> {
+
+
 }
